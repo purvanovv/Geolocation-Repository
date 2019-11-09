@@ -3,33 +3,24 @@
 	targetNamespace="https://www.geolocation.com/route/directions"
 	elementFormDefault="qualified">
 
-	<xs:element name="GetDirectionsRequest">
+	<xs:element name="GetRouteRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="from" type="xs:string" />
 				<xs:element name="to" type="xs:string" />
-				<xs:element name="ambiguities" type="xs:Ambiguities" />
-				<xs:element name="portType" type="xs:PortType" />
+				<xs:element name="ambiguities" type="tns:Ambiguities" />
+				<xs:element name="portType" type="tns:PortType" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-
-	<xs:element name="GetDirectionsResponse">
+	<xs:element name="GetRouteResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Route" type="tns:Route" />
+				<xs:element name="distance" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
-	<xs:complexType name="Route">
-		<xs:sequence>
-			<xs:element name="hasTollRoad" type="xs:boolean" />
-			<xs:element name="hasBridge" type="xs:boolean" />
-			<xs:element name="distance" type="xs:double" />
-		</xs:sequence>
-	</xs:complexType>
 
 	<xs:simpleType name="Ambiguities" final="restriction">
 		<xs:restriction base="xs:string">
