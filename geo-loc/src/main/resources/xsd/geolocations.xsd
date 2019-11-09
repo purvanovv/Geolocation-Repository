@@ -1,0 +1,50 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="https://www.geolocation.com/route/directions"
+	targetNamespace="https://www.geolocation.com/route/directions"
+	elementFormDefault="qualified">
+
+	<xs:element name="GetDirectionsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from" type="xs:string" />
+				<xs:element name="to" type="xs:string" />
+				<xs:element name="ambiguities" type="xs:Ambiguities" />
+				<xs:element name="portType" type="xs:PortType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="GetDirectionsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Route" type="tns:Route" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="Route">
+		<xs:sequence>
+			<xs:element name="hasTollRoad" type="xs:boolean" />
+			<xs:element name="hasBridge" type="xs:boolean" />
+			<xs:element name="distance" type="xs:double" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="Ambiguities" final="restriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="check" />
+			<xs:enumeration value="ignore" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PortType" final="restriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="fastest" />
+			<xs:enumeration value="shortest" />
+			<xs:enumeration value="pedestrian" />
+			<xs:enumeration value="multimodal" />
+			<xs:enumeration value="bicycle" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
