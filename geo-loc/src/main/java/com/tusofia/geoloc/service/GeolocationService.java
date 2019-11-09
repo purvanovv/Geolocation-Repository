@@ -1,9 +1,10 @@
 package com.tusofia.geoloc.service;
 
-import com.tusofia.geoloc.model.Ambiguities;
-import com.tusofia.geoloc.model.PortType;
-import com.tusofia.geoloc.model.Route;
+import com.tusofia.generated.Ambiguities;
+import com.tusofia.generated.PortType;
+import com.tusofia.geoloc.model.RouteResponse;
+
 
 public interface GeolocationService {
-	public Route getRoutes(String from, String to, PortType portType, Ambiguities ambiguities);
+	public RouteResponse getRoute(String from, String to, PortType portType, Ambiguities ambiguities);
 }
